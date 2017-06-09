@@ -11,6 +11,10 @@
 	text-align:center;
 }
 
+label{
+	    margin-top: 10px;
+}
+
 .input-group{
 	margin-bottom: 20px;
 }
