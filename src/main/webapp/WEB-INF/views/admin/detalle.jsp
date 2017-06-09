@@ -3,43 +3,54 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-	<title>Detalle</title>
 	<base href="/formacion/" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="resources/css/style.css" rel="stylesheet">	
+	<title>Detalle</title>	
 </head>
 <body>
-<h1>Detalle</h1>
 
-<a href="admin">volver</a>
-<c:if test = "${curso.id!=-1}">
-	<form:form action="admin/modificar" modelAttribute="curso">
-	
-		<form:hidden path="id"/><br>
-						
-		<form:label path="nombre">Nombre</form:label>
-		<form:input path="nombre"/>
-		<form:label path="codigo">codigo</form:label>
-		<form:input path="codigo"/>
-		
+<nav class="navbar navbar-default">
+ 	<div class="container-fluid">
+  		<div class="navbar-header">
+     		<a class="right" href="admin"><span class="fa fa-arrow-left" aria-hidden="true"></span> Volver</a>
+   		</div>
+ 	</div>
+</nav>
 
-		<form:button type="submit">Modificar</form:button>
-		
-	</form:form>
-</c:if>
+	
+<div class="container">
+	<c:if test = "${curso.id!=-1}">
+		<form:form action="admin/modificar" modelAttribute="curso" class="form-horizontal">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<form:hidden path="id"/><br>					
+					<form:label path="nombre">Nombre</form:label>
+					<form:input class="form-control" path="nombre"/>
+					<form:label path="codigo">Codigo</form:label>
+					<form:input class="form-control" path="codigo"/>
 
-<c:if test = "${curso.id==-1}">
-	<form:form action="admin/crear" modelAttribute="curso">
-	
-		<form:hidden path="id"/><br>
-						
-		<form:label path="nombre">Nombre</form:label>
-		<form:input path="nombre"/>
-		<form:label path="codigo">codigo</form:label>
-		<form:input path="codigo"/>
-		
-		
-		<form:button type="submit">Crear</form:button>
-	
-	</form:form>
-</c:if>
+					<form:button class="btn btn-default" type="submit"><span class="fa fa-check" aria-hidden="true"></span></form:button>
+				</div>
+			</div>
+		</form:form>
+	</c:if>
+	<c:if test = "${curso.id==-1}">
+		<form:form action="admin/crear" modelAttribute="curso" class="form-horizontal">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<form:hidden path="id"/><br>				
+					<form:label path="nombre">Nombre</form:label>
+					<form:input class="form-control" path="nombre"/>
+					<form:label path="codigo">Codigo</form:label>
+					<form:input class="form-control" path="codigo"/>
+
+					<form:button class="btn btn-default" type="submit"><span class="fa fa-check" aria-hidden="true"></span></form:button>
+				</div>
+			</div>
+		</form:form>
+	</c:if>
+</div>
 </body>
 </html>

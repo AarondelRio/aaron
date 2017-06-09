@@ -1,0 +1,38 @@
+
+.form-inline .form-control{
+	width: 40%%;
+}
+
+.row{
+	width: 100%;
+}
+
+.input-group .form-control/*, .ui-widget.ui-widget-content*/{
+	text-align:center;
+}
+
+.input-group{
+	margin-bottom: 20px;
+}
+
+nav a{
+	text-decoration:none;
+	font-size: xx-large;
+	padding: 0px 10px 0 10px;
+}
+
+nav a:hover{
+	text-decoration:none;
+}
+
+.navbar-header{
+	width: 100%;
+}
+
+.right{
+	float:right
+}
+.btn.btn-default{
+	float: right;
+    margin-top: 10px;
+}
