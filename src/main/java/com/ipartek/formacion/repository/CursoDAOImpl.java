@@ -42,6 +42,15 @@ public class CursoDAOImpl implements CursoDAO {
 	}
 	
 	@Override
+	public List<Curso> autocomplete(String filtro) {
+		List<Curso> cursos = this.jdbctemplate.query(
+				"SELECT `id`, `nombre`, `codigo` FROM `cursos` WHERE `nombre` LIKE '%' ? '%' OR `codigo` LIKE '%' ? '%' ;", 
+				new Object[] { filtro , filtro}, new CursoMapper());
+		
+		return cursos;
+	}
+	
+	@Override
 	public List<Curso> getLast10() {
 		List<Curso> usuarios =  this.jdbctemplate.query(
 				"SELECT `id`,  `nombre`, `codigo` FROM cursos ORDER BY `id` DESC LIMIT 10;",

@@ -22,6 +22,10 @@ public class CursoServiceImpl implements CursoService {
 		return this.cursoDAO.getAll();
 	}
 	@Override
+	public List<Curso> autocomplete(String filtro) {
+		return this.cursoDAO.autocomplete(filtro);
+	}
+	@Override
 	public boolean update(Curso curso) {
 		return this.cursoDAO.update(curso);
 	}
@@ -47,14 +51,13 @@ public class CursoServiceImpl implements CursoService {
 		CSVReader reader = new CSVReader(new FileReader("c:\\cursos.csv"),';');
 	     List<String[]> myEntries = reader.readAll();
 	     for (String[] linea: myEntries) {
-	    	 Curso curso = new Curso();
-	    	 curso.setNombre(linea[1]);
-	    	 curso.setCodigo(linea[8]);
-	    	 System.out.println(cont + " " + linea[1] + " "+ linea[8]);
-	    	 if(!this.cursoDAO.add(curso)){
-	    		 System.out.println("fallo" + curso + "en la linea " + linea[0]);
-	    	 }else{
-	    		 System.out.println(cont + " " + linea[1] + " "+ linea[8]);
+	    	 if(cont!=0){
+		    	 Curso curso = new Curso();
+		    	 curso.setNombre(linea[1]);
+		    	 curso.setCodigo(linea[8]);
+		    	 if(!"".equals(curso.getCodigo()) && !"".equals(curso.getNombre())){
+		    		 this.cursoDAO.add(curso);
+		    	 }
 	    	 }
 	    	 cont++;
 		}

@@ -2,27 +2,21 @@
 <%@ page session="false" %>
 <html>
 <head>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link href="resources/css/style.css" rel="stylesheet">
 	<base href="/formacion/" />
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+<h1>Cursos</h1>
+
 <a href="admin">Backoffice</a>
 
-<form class="navbar-form navbar-left">
-       <div class="input-group">
-       <label for="buscadorCurso" class="input-group-addon">Buscar<span class="glyphicon glyphicon-search"></span></label>
-         <input type="text" id="autocomplete" class="form-control" size= 55 placeholder="Busque aqui su curso">
-         
-       </div>
-</form>
+<input type="text" id="autocomplete" class="form-control" size= 55 placeholder="Busque aqui su curso">
 
 <c:forEach items="${cursos}" var="c">
 	<ul>
-		<li>ID ${c.id} NOMBRE ${c.nombre} CODIGO ${c.codigo}</li>
-		
+		<li>ID ${c.id} NOMBRE ${c.nombre} CODIGO ${c.codigo}</li>	
 	</ul>
 </c:forEach>
 		

@@ -10,9 +10,11 @@ public interface CursoService {
 	
 	List<Curso> getAll();
 	
-	Curso getById(int idCurso);
+	List<Curso> autocomplete(String filtro);
 	
 	List<Curso> getLast10();
+	
+	Curso getById(int idCurso);	
 	
 	boolean update(Curso curso);
 	
