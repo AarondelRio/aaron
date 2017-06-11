@@ -4,8 +4,9 @@
 <html>
 <head>
 	<base href="/formacion/" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<link href="resources/css/style.css" rel="stylesheet">	
 	<title>Detalle</title>	
 </head>
@@ -18,9 +19,9 @@
    		</div>
  	</div>
 </nav>
-
 	
 <div class="container">
+
 	<c:if test = "${curso.id!=-1}">
 		<form:form action="admin/modificar" modelAttribute="curso" class="form-horizontal">
 			<div class="row">
@@ -36,6 +37,7 @@
 			</div>
 		</form:form>
 	</c:if>
+	
 	<c:if test = "${curso.id==-1}">
 		<form:form action="admin/crear" modelAttribute="curso" class="form-horizontal">
 			<div class="row">
@@ -51,6 +53,7 @@
 			</div>
 		</form:form>
 	</c:if>
+	
 </div>
 </body>
 </html>

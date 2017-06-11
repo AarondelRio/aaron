@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ipartek.formacion.domain.Curso;
+import com.ipartek.formacion.domain.MigrationData;
 import com.ipartek.formacion.repository.CursoDAO;
 
 import au.com.bytecode.opencsv.CSVReader;
@@ -46,7 +47,8 @@ public class CursoServiceImpl implements CursoService {
 		return this.cursoDAO.getLast10();
 	}
 	@Override
-	public void migrate() throws Exception {
+	public MigrationData migrate() throws Exception {
+		MigrationData migDat = new MigrationData();
 		int cont = 0;
 		CSVReader reader = new CSVReader(new FileReader("c:\\cursos.csv"),';');
 	     List<String[]> myEntries = reader.readAll();
@@ -56,12 +58,24 @@ public class CursoServiceImpl implements CursoService {
 		    	 curso.setNombre(linea[1]);
 		    	 curso.setCodigo(linea[8]);
 		    	 if(!"".equals(curso.getCodigo()) && !"".equals(curso.getNombre())){
-		    		 this.cursoDAO.add(curso);
+		    		 if(!this.cursoDAO.cursoExiste(curso)){
+			    		 this.cursoDAO.add(curso);
+			    		 migDat.addCursosInsertados();
+		    		 }else{
+		    			migDat.addCursosExistian();
+		    		 }		    	 
+		    	 }else{
+		    		 migDat.addCursosIncompletos();
 		    	 }
 	    	 }
 	    	 cont++;
 		}
 	     reader.close();
+	     return migDat;
+	}
+	@Override
+	public boolean cursoExiste(Curso curso) {
+		return this.cursoDAO.cursoExiste(curso);
 	}
 
 }

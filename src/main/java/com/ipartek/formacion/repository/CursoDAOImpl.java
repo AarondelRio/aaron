@@ -110,4 +110,16 @@ public class CursoDAOImpl implements CursoDAO {
 		return borrado;
 	}
 
+	@Override
+	public boolean cursoExiste(Curso curso) {
+		boolean existe = false;
+		List<Curso> cursos =  this.jdbctemplate.query(
+				"SELECT `id`,  `nombre`, `codigo` FROM cursos WHERE `nombre`=? AND `codigo`=?;",
+				new Object[] { curso.getNombre(), curso.getCodigo() }, new CursoMapper());
+		if(cursos.size()>0){
+			existe = true;
+		}
+		return existe;
+	}
+
 }

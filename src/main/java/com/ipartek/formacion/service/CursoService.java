@@ -1,9 +1,9 @@
 package com.ipartek.formacion.service;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import com.ipartek.formacion.domain.Curso;
+import com.ipartek.formacion.domain.MigrationData;
 
 
 public interface CursoService {
@@ -22,5 +22,7 @@ public interface CursoService {
 	
 	boolean delete(int idCurso);
 	
-	void migrate() throws Exception;
+	boolean cursoExiste(Curso curso) ;
+	
+	MigrationData migrate() throws Exception;
 }

@@ -10,12 +10,12 @@ public interface CursoDAO {
 	
 	void setDataSource(DataSource dataSource);
 	
-	List<Curso> getAll();
-	
 	List<Curso> autocomplete(String filtro);
 	
-	List<Curso> getLast10();
+	List<Curso> getAll();
 	
+	List<Curso> getLast10();
+
 	Curso getById(int idCurso);
 
 	boolean update(Curso curso);
@@ -24,5 +24,5 @@ public interface CursoDAO {
 	
 	boolean delete(int idCurso);
 	
-	
+	boolean cursoExiste(Curso curso);
 }
