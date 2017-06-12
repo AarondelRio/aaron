@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<div class="container">
+
 <nav class="navbar navbar-default">
  	<div class="container-fluid">
   		<div class="navbar-header">
@@ -19,8 +21,6 @@
    		</div>
  	</div>
 </nav>
-	
-<div class="container">
 
 	<c:if test = "${curso.id!=-1}">
 		<form:form action="admin/modificar" modelAttribute="curso" class="form-horizontal">

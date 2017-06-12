@@ -1,5 +1,7 @@
 package com.ipartek.formacion.controller;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -112,6 +114,9 @@ public class CursoController {
 			this.msg.buildMsg("Se han insertado " + migDat.getCursosInsertados() + " Cursos, ");
 			this.msg.buildMsg(migDat.getCursosExistian() + " Cursos ya existian");
 			this.msg.buildMsg(" y " + migDat.getCursosIncompletos() + " Cursos estaban incompletos");
+		} catch (FileNotFoundException e) {
+			this.msg.setType("danger");
+			this.msg.setMsg("El archivo no se encuentra en C: con el nombre cursos.csv");
 		} catch (Exception e) {
 			this.msg.setType("danger");
 			this.msg.setMsg("La aplicacion ha fallado en servidor, pongase en contacto con el administrador");

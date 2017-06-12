@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
 	<base href="/formacion/" />
@@ -12,6 +11,8 @@
 </head>
 <body>
 
+<div class="container">
+
 <nav class="navbar navbar-default">
  		<div class="container-fluid">
   			<div class="navbar-header">
@@ -19,8 +20,6 @@
 		</div>
  		</div>
 </nav>
-
-<div class="container">
 
 	<div class="row">
 			<div class="col-md-6 col-md-offset-3">
@@ -33,11 +32,19 @@
 		</div>
 	</div>
 
-	<ul class="list-group">
+	<c:if test="${empty cursos}">
+		<div class="alert alert-warning" role="alert">
+				<p>No hay datos en la Base de Datos</p>
+		</div>
+	</c:if>
+	<c:if test="${not empty cursos}">
+		<ul class="list-group">
 		<c:forEach items="${cursos}" var="c">
 	  		<li class="list-group-item">${c.nombre}<span class="badge">${c.codigo}</span></li>
 	  	</c:forEach>
 	</ul>
+	</c:if>
+	
 	
 </div>
 
