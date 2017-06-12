@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -94,7 +93,7 @@ public class CursoController {
 			this.msg = new Message();
 			if(this.cursoService.delete(idCurso)){		
 				this.msg.setType("success");
-				this.msg.buildMsg("El curso se ha añadido correctamente");
+				this.msg.buildMsg("El curso se ha eliminado correctamente");
 			}
 		} catch (Exception e) {
 			this.msg.setType("danger");

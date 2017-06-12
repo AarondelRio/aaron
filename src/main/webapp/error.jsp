@@ -1,33 +1,45 @@
 <!doctype html>
 <html lang="es">
 <head>
+	<base href="/formacion/" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<link href="resources/css/style.css" rel="stylesheet">	
 	<meta charset="utf-8">
-	<title>Login</title>
-	
-	<!-- Custom -->
-	<link href="resources/css/custom.css" rel="stylesheet">
-	
+	<title>Error</title>
 </head>
-<body class="login_bg">
+<div class="container">
 
-	<div id="login">
+<nav class="navbar navbar-default">
+ 		<div class="container-fluid">
+  			<div class="navbar-header">
+  			<a class="right" href=""><span class="fa fa-arrow-left" aria-hidden="true"></span> Volver</a>
+   		</div>
+ 		</div>
+</nav>
 		
-		<form action="login" method="post">
-			
-			<h1 class="box-header">Login</h1>
-			
-			<p>El Usuario o la contrase�a es incorrecto</p>
-			 
-			<label for="usuario">Usuario</label>
-			<input type="text" id="usuario" name="usuario">
-			
-			<label for="clave">Password</label>
-			<input type="password" id="clave" name="clave">
-			
-			<br>
-			<input type="submit" value="validar">
+<div class="alert alert-warning" role="alert">
+	<p>El usuario o el Password son incorrectos</p>
+</div>		
 
-		</form>
+<form action="login" method="post" class="form-horizontal">
+	
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+	
+		<label for="usuario">Usuario</label>
+		<input type="text" id="usuario" name="usuario" class="form-control">
+		
+		<label for="clave">Password</label>
+		<input type="password" id="clave" name="clave" class="form-control">
+		
+		<br>
+		<input type="submit" value="login">
+		</div>
 	</div>
+</form>
+<img src="http://i.imgur.com/j51uHm1.gif">
+</div>
 </body>
 </html>

@@ -34,7 +34,7 @@
 
 	<c:if test="${empty cursos}">
 		<div class="alert alert-warning" role="alert">
-				<p>No hay datos en la Base de Datos</p>
+				<p>No hay cursos en la Base de Datos</p>
 		</div>
 	</c:if>
 	<c:if test="${not empty cursos}">

@@ -23,35 +23,43 @@
  		</div>
 </nav>
 
+	<c:if test="${empty cursos}">
+		<div class="alert alert-warning" role="alert">
+				<p>No hay cursos en la Base de Datos, migre un archivo Excel o insertelos uno a uno</p>
+		</div>
+	</c:if>
+	
 	<c:if test = "${msg!=null}">
 		<div class="alert alert-${msg.type}" role="alert">
 				${msg.msg}
 		</div>
 	</c:if>
 	
-	<table id="myTable">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Codigo</th>
-				<th>Operaciones</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${cursos}" var="c">
+	<c:if test="${not empty cursos}">
+		<table id="myTable">
+			<thead>
 				<tr>
-					<td>${c.id}</td>
-					<td>${c.nombre}</td>
-					<td><span class="badge">${c.codigo}</span></td>
-					<td>
-						<a href="admin/eliminar/${c.id}"><span class="fa fa-times delete" aria-hidden="true"></span></a>
-						<a href="admin/consultar/${c.id}"><span class="fa fa-pencil" aria-hidden="true"></span></a>
-					</td>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Codigo</th>
+					<th>Operaciones</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${cursos}" var="c">
+					<tr>
+						<td>${c.id}</td>
+						<td>${c.nombre}</td>
+						<td><span class="badge">${c.codigo}</span></td>
+						<td>
+							<a href="admin/eliminar/${c.id}"><span class="fa fa-times delete" aria-hidden="true"></span></a>
+							<a href="admin/consultar/${c.id}"><span class="fa fa-pencil" aria-hidden="true"></span></a>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</c:if>
 	
 	<!-- Modal Migrar -->
 	<div id="modal-migrate" class="modal fade" role="dialog">

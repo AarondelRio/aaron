@@ -46,3 +46,6 @@ form .btn.btn-default{
 	float: right;
     margin-top: 10px;
 }
+.alert p{
+	text-align:center;
+}
