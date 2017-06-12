@@ -17,7 +17,11 @@ import org.springframework.stereotype.Repository;
 
 import com.ipartek.formacion.domain.Curso;
 import com.ipartek.formacion.repository.mapper.CursoMapper;
-
+/**
+ * DAO para la gestion de cursos
+ * @author Aaron
+ *
+ */
 @Repository(value = "cursoDAO")
 public class CursoDAOImpl implements CursoDAO {
 
@@ -33,7 +37,7 @@ public class CursoDAOImpl implements CursoDAO {
 
 	}
 
-	@Override
+	@Override()
 	public List<Curso> getAll() {
 		List<Curso> cursos =  this.jdbctemplate.query(
 				"SELECT `id`,  `nombre`, `codigo` FROM cursos ORDER BY `id` DESC;",
@@ -41,7 +45,7 @@ public class CursoDAOImpl implements CursoDAO {
 		return cursos;
 	}
 	
-	@Override
+	@Override()
 	public List<Curso> autocomplete(String filtro) {
 		List<Curso> cursos = this.jdbctemplate.query(
 				"SELECT `id`, `nombre`, `codigo` FROM `cursos` WHERE `nombre` LIKE '%' ? '%' OR `codigo` LIKE '%' ? '%' ;", 
@@ -50,7 +54,7 @@ public class CursoDAOImpl implements CursoDAO {
 		return cursos;
 	}
 	
-	@Override
+	@Override()
 	public List<Curso> getLast10() {
 		List<Curso> usuarios =  this.jdbctemplate.query(
 				"SELECT `id`,  `nombre`, `codigo` FROM cursos ORDER BY `id` DESC LIMIT 10;",
@@ -58,14 +62,14 @@ public class CursoDAOImpl implements CursoDAO {
 		return usuarios;
 	}
 	
-	@Override
+	@Override()
 	public Curso getById(int idCurso) {
 		Curso curso = this.jdbctemplate.queryForObject("SELECT `id`, `nombre`, `codigo` FROM `cursos` WHERE `id`= ?",
 				new Object[] { idCurso }, new CursoMapper());
 		return curso;
 	}
 
-	@Override
+	@Override()
 	public boolean update(Curso curso) {
 		boolean modificado = false;
 		int lineasModificadas = 0;
@@ -76,7 +80,7 @@ public class CursoDAOImpl implements CursoDAO {
 		return modificado;
 	}
 
-	@Override
+	@Override()
 	public boolean add(final Curso curso) {
 		boolean insertado = false;
 		int lineasInsertadas = 0;
@@ -99,7 +103,7 @@ public class CursoDAOImpl implements CursoDAO {
 		return insertado;
 	}
 
-	@Override
+	@Override()
 	public boolean delete(int idCurso) {
 		boolean borrado = false;
 		int lineasBorradas = 0;
@@ -110,7 +114,7 @@ public class CursoDAOImpl implements CursoDAO {
 		return borrado;
 	}
 
-	@Override
+	@Override()
 	public boolean cursoExiste(Curso curso) {
 		boolean existe = false;
 		List<Curso> cursos =  this.jdbctemplate.query(

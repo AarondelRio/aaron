@@ -5,7 +5,11 @@ import java.util.List;
 import com.ipartek.formacion.domain.Curso;
 import com.ipartek.formacion.domain.MigrationData;
 
-
+/**
+ * Interface del Servicio para la gestion de cursos
+ * @author Aaron
+ *
+ */
 public interface CursoService {
 	
 	List<Curso> getAll();

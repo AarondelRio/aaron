@@ -20,7 +20,7 @@
 </nav>
 		
 <div class="alert alert-warning" role="alert">
-	<p>El usuario o el Password son incorrectos</p>
+	<p>El Usuario o el Password son incorrectos</p>
 </div>		
 
 <form action="login" method="post" class="form-horizontal">

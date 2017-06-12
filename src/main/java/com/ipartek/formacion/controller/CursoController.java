@@ -14,7 +14,11 @@ import com.ipartek.formacion.domain.Message;
 import com.ipartek.formacion.domain.MigrationData;
 import com.ipartek.formacion.service.CursoService;
 
-
+/**
+ * Controlador para Cursos
+ * @author aaron
+ *
+ */
 @Controller()
 public class CursoController {
 
@@ -73,9 +77,14 @@ public class CursoController {
 	public String modificar(Curso curso, Model model) {
 		try{
 			this.msg = new Message();
-			if(this.cursoService.update(curso)){		
-				this.msg.setType("success");
-				this.msg.buildMsg("El curso se ha modificado correctamente");
+			if(!this.cursoService.cursoExiste(curso)){
+				if(this.cursoService.update(curso)){		
+					this.msg.setType("success");
+					this.msg.buildMsg("El curso se ha modifcado correctamente");
+				}
+			}else{
+				this.msg.setType("warning");
+				this.msg.buildMsg("El curso ya existe");
 			}
 		} catch (Exception e) {
 			this.msg.setType("danger");
@@ -94,6 +103,9 @@ public class CursoController {
 			if(this.cursoService.delete(idCurso)){		
 				this.msg.setType("success");
 				this.msg.buildMsg("El curso se ha eliminado correctamente");
+			}else{
+				this.msg.setType("warning");
+				this.msg.buildMsg("El curso no se ha eliminado correctamente");
 			}
 		} catch (Exception e) {
 			this.msg.setType("danger");

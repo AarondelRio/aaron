@@ -8,10 +8,14 @@ import org.springframework.jdbc.core.RowMapper;
 import com.ipartek.formacion.domain.Curso;
 
 
+/**
+ * Mapper para el POJO Curso
+ * @author Aaron
+ *
+ */
+public class CursoMapper implements RowMapper<Curso> {
 
-public class CursoMapper implements RowMapper<Curso>{
-
-	@Override
+	@Override()
 	public Curso mapRow(ResultSet resulSet, int rowNum) throws SQLException {
 		Curso curso= new Curso();
 		curso.setId(resulSet.getInt("id"));
