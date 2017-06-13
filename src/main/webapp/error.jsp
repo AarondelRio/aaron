@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 	<base href="/formacion/" />
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 </form>
-<img src="http://i.imgur.com/j51uHm1.gif">
+<img src="http://i.imgur.com/j51uHm1.gif" alt="Travolta confuso por el Login">
 </div>
 </body>
 </html>

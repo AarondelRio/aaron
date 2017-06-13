@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 	<base href="/formacion/" />
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -24,8 +25,10 @@
 	<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 			<div class="input-group">
+			
 			<input type="text" id="autocomplete" class="form-control" size= 55 placeholder="Busque aqui su curso">
 			<span class="input-group-addon">
+			<label for="autocomplete">Buscar</label>
 						<span class="fa fa-search" aria-hidden="true"></span>
 			</span>	
 			</div>

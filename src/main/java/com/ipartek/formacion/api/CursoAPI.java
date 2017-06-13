@@ -13,13 +13,17 @@ import com.ipartek.formacion.domain.Curso;
 import com.ipartek.formacion.service.CursoService;
 
 
-
-@Controller
+/**
+ * Controlador encargado de gestionar el servicio REST
+ * @author Aaron
+ *
+ */
+@Controller()
 @RequestMapping(value = "/api/")
 public class CursoAPI {
 
-	@Autowired
-	CursoService cursoService;
+	@Autowired()
+	private CursoService cursoService;
 
 //	@RequestMapping(value = "", method = RequestMethod.GET)
 //	public ResponseEntity<List<Curso>> listar() {
@@ -43,6 +47,11 @@ public class CursoAPI {
 //		return response;
 //	}
 	
+	/**
+	 * Controlador que devuelve los cursos que contienen el parametro de busqueda
+	 * @param filtro parametro de busqueda
+	 * @return JSON de cursos
+	 */
 	@RequestMapping(value="cursos", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Curso> autocomplete(@RequestParam(value = "filtro", required = false) String filtro){
 

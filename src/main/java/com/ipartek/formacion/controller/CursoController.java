@@ -16,7 +16,7 @@ import com.ipartek.formacion.service.CursoService;
 
 /**
  * Controlador para Cursos
- * @author aaron
+ * @author Aaron
  *
  */
 @Controller()
@@ -27,18 +27,34 @@ public class CursoController {
 	
 	private Message msg;
 
+	/**
+	 * Controlador encargado de devolver los ultimos 10 Cursos
+	 * @param model cursos, ultimos 10 cursos
+	 * @return view home.jsp
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("cursos", this.cursoService.getLast10());
 		return "home";
 	}
 	
+	/**
+	 * Controlador encargado de devolver todos los Cursos a la parte de gestion de Cursos
+	 * @param model cursos, todos los cursos
+	 * @return view admin/index.jsp
+	 */
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String admin(Model model) {
 		model.addAttribute("cursos", this.cursoService.getAll());
 		return "admin/index";
 	}
 	
+	/**
+	 * Controlador encargado de consultar un Curso
+	 * @param idCurso identificador unico del Curso a consultar, -1 si el Curso es nuevo
+	 * @param model curso, curso
+	 * @return view admin/detalle.jsp
+	 */
 	@RequestMapping(value = "/admin/consultar/{idCurso}", method = RequestMethod.GET)
 	public String consultar(@PathVariable() int idCurso, Model model) {
 		if(idCurso!=-1){
@@ -50,7 +66,12 @@ public class CursoController {
 		return "admin/detalle";
 	}
 	
-	
+	/**
+	 * Controlador encargado de Crear un Curso Nuevo
+	 * @param curso POJO Curso
+	 * @param model cursos, todos los cursos. msg, mensaje
+	 * @return view admin/index.jsp
+	 */
 	@RequestMapping(value = "/admin/crear", method = RequestMethod.POST)
 	public String crear(Curso curso, Model model) {
 		try{
@@ -73,6 +94,12 @@ public class CursoController {
 		return "admin/index";
 	}
 
+	/**
+	 * Controlador encargado de modificar un Curso
+	 * @param curso POJO Curso
+	 * @param model cursos, todos los cursos. msg, mensaje
+	 * @return view admin/index.jsp
+	 */
 	@RequestMapping(value = "/admin/modificar", method = RequestMethod.POST)
 	public String modificar(Curso curso, Model model) {
 		try{
@@ -95,7 +122,12 @@ public class CursoController {
 		return "admin/index";
 	}
 
-
+	/**
+	 * Controlador encargado de eliminar un Curso
+	 * @param idCurso identificador unico de Curso
+	 * @param model cursos, todos los cursos. msg, mensajes
+	 * @return view admin/index.jsp
+	 */
 	@RequestMapping(value = "/admin/eliminar/{idCurso}", method = RequestMethod.GET)
 	public String eliminar(@PathVariable() int idCurso, Model model) {
 		try{
@@ -116,6 +148,11 @@ public class CursoController {
 		return "admin/index";
 	}
 	
+	/**
+	 * Controlador encargado de migrar un Excel a SQL
+	 * @param model cursos, todos los cursos. msg, mensaje
+	 * @return admin/index.jsp
+	 */
 	@RequestMapping(value = "/admin/migrate", method = RequestMethod.GET)
 	public String migrate(Model model) {
 		try {

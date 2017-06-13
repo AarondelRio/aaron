@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 	<base href="/formacion/"/>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +17,7 @@
 <nav class="navbar navbar-default">
  		<div class="container-fluid">
   			<div class="navbar-header">
-  				<a href="admin/consultar/-1"><i class="fa fa-plus add" aria-hidden="true"></i> Nuevo</a>
+  				<a href="admin/consultar/-1"><span class="fa fa-plus add" aria-hidden="true"></span> Nuevo</a>
      			<a data-toggle="modal" href="#modal-migrate"><span class="fa fa-database" aria-hidden="true"></span> Migrar</a>
 			<a class="right" href="logout"><span class="fa fa-sign-out" aria-hidden="true"></span> Logout</a>
    		</div>
@@ -73,7 +74,7 @@
 				</div>
 				<div class="modal-body">
 					<p>Seguro que desea migrar el archivo?</p> 
-					<p>Asegurese de que se encuentra en <b>C:\</b> con el nombre <b>cursos.csv</b></p>		
+					<p>Asegurese de que se encuentra en <strong>C:\</strong> con el nombre <strong>cursos.csv</strong></p>		
 					<p>Este proceso puede tardar varios segundos, por favor espere..</p>		
 				</div>
 				<div class="modal-footer">
