@@ -2,9 +2,12 @@ package com.ipartek.formacion.controller;
 
 import java.io.FileNotFoundException;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -73,18 +76,22 @@ public class CursoController {
 	 * @return view admin/index.jsp
 	 */
 	@RequestMapping(value = "/admin/crear", method = RequestMethod.POST)
-	public String crear(Curso curso, Model model) {
+	public String crear(@Valid Curso curso, BindingResult bindingResult, Model model ) {
 		try{
-			this.msg = new Message();
-			if(!this.cursoService.cursoExiste(curso)){
-				if(this.cursoService.add(curso)){		
-					this.msg.setType("success");
-					this.msg.buildMsg("El curso se ha añadido correctamente");
+			if (!bindingResult.hasErrors()) {     
+				this.msg = new Message();
+				if(!this.cursoService.cursoExiste(curso)){
+					if(this.cursoService.add(curso)){		
+						this.msg.setType("success");
+						this.msg.buildMsg("El curso se ha añadido correctamente");
+					}
+				}else{
+					this.msg.setType("warning");
+					this.msg.buildMsg("El curso ya existe");
 				}
-			}else{
-				this.msg.setType("warning");
-				this.msg.buildMsg("El curso ya existe");
-			}
+			 }else{
+				 return "admin/detalle";
+			 }
 		} catch (Exception e) {
 			this.msg.setType("danger");
 			this.msg.setMsg("La aplicacion ha fallado en servidor, pongase en contacto con el administrador");
@@ -101,18 +108,22 @@ public class CursoController {
 	 * @return view admin/index.jsp
 	 */
 	@RequestMapping(value = "/admin/modificar", method = RequestMethod.POST)
-	public String modificar(Curso curso, Model model) {
+	public String modificar(@Valid Curso curso, BindingResult bindingResult, Model model ) {
 		try{
-			this.msg = new Message();
-			if(!this.cursoService.cursoExiste(curso)){
-				if(this.cursoService.update(curso)){		
-					this.msg.setType("success");
-					this.msg.buildMsg("El curso se ha modifcado correctamente");
+			if (!bindingResult.hasErrors()) {   
+				this.msg = new Message();
+				if(!this.cursoService.cursoExiste(curso)){
+					if(this.cursoService.update(curso)){		
+						this.msg.setType("success");
+						this.msg.buildMsg("El curso se ha modifcado correctamente");
+					}
+				}else{
+					this.msg.setType("warning");
+					this.msg.buildMsg("El curso ya existe");
 				}
 			}else{
-				this.msg.setType("warning");
-				this.msg.buildMsg("El curso ya existe");
-			}
+				 return "admin/detalle";
+			 }
 		} catch (Exception e) {
 			this.msg.setType("danger");
 			this.msg.setMsg("La aplicacion ha fallado en servidor, pongase en contacto con el administrador");

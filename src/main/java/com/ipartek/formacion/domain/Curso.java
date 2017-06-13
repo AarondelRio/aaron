@@ -1,4 +1,8 @@
 package com.ipartek.formacion.domain;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * POJO Curso
  * @author Aaron
@@ -6,7 +10,11 @@ package com.ipartek.formacion.domain;
  */
 public class Curso {
 	private int id;
+	@NotNull()
+	@Size(message="Longitud Incorrecta, minimo {min} y maximo {max} caracteres",min=1, max=255)
 	private String nombre;
+	@NotNull()
+	@Size(message="Longitud Incorrecta, minimo {min} y maximo {max} caracteres",min=1, max=55)
 	private String codigo;
 	
 	/**

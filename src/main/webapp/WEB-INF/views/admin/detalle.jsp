@@ -24,14 +24,18 @@
 </nav>
 
 	<c:if test = "${curso.id!=-1}">
-		<form:form action="admin/modificar" modelAttribute="curso" class="form-horizontal">
+		<form:form action="admin/modificar" modelAttribute="curso" class="form-horizontal" method="post">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<form:hidden path="id"/><br>					
-					<form:label path="nombre">Nombre</form:label>
+					<form:label path="nombre">Nombre&nbsp&nbsp</form:label><form:errors path="nombre" cssStyle="color:red;"/>					
 					<form:input class="form-control" path="nombre"/>
-					<form:label path="codigo">Codigo</form:label>
+					
+
+					<form:label path="codigo">Codigo&nbsp&nbsp</form:label><form:errors path="codigo" cssStyle="color:red;"/>					
 					<form:input class="form-control" path="codigo"/>
+					
+					
 
 					<form:button class="btn btn-default" type="submit"><span class="fa fa-check" aria-hidden="true"></span></form:button>
 				</div>
@@ -40,14 +44,17 @@
 	</c:if>
 	
 	<c:if test = "${curso.id==-1}">
-		<form:form action="admin/crear" modelAttribute="curso" class="form-horizontal">
+		<form:form action="admin/crear" modelAttribute="curso" class="form-horizontal" method="post">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
 					<form:hidden path="id"/><br>				
-					<form:label path="nombre">Nombre</form:label>
+					<form:label path="nombre">Nombre&nbsp&nbsp</form:label><form:errors path="nombre" cssStyle="color:red;"/>
 					<form:input class="form-control" path="nombre"/>
-					<form:label path="codigo">Codigo</form:label>
+					
+					
+					<form:label path="codigo">Codigo&nbsp&nbsp</form:label><form:errors path="codigo" cssStyle="color:red;"/>
 					<form:input class="form-control" path="codigo"/>
+					
 
 					<form:button class="btn btn-default" type="submit"><span class="fa fa-check" aria-hidden="true"></span></form:button>
 				</div>
